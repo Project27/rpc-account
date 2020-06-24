@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: rpc-account
+  cloud:
+    zookeeper:
+      connect-string: ${ZOOKEEPER_SERVER:ip:port}
+  config:
+    profile: ${SPRING_PROFILE:dev}
+    label: master_nnuo
+    discovery:
+      enabled: true
+      service-id: nnuo-config-server-zk
+
+serviceGroup: ${SPRING_REFERENCE:daily}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  server:
+    servlet:
+      context-path: /monitor
+
+
+
+
+

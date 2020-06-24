@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+       http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
+
+    <dubbo:application name="rpc-account" />
+    <dubbo:protocol name="dubbo" port="${server.dubbo.port}" id="provider"/>
+    <dubbo:registry check="${check-rpc:false}" address="${spring.cloud.zookeeper.connect-string}"  protocol="zookeeper" id="zkreg" >
+        <dubbo:parameter key="qos.enable" value="false"/>
+    </dubbo:registry>
+
+    <dubbo:provider retries="0" threads="300" dispatcher="message" threadpool="cached" filter="timeout" timeout="2000" registry="zkreg" group="${service-group}" version="1.0.0"/>
+
+    <bean id="userBaseService" class="com.nuonuo.rpcaccount.service.impl.UserBaseServiceImpl" />
+
+    <dubbo:service interface="com.nuonuo.rpcaccount.service.impl.UserBaseServiceImpl" ref="userBaseService"/>
+</beans>
