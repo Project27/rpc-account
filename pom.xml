@@ -41,16 +41,9 @@
         </dependency>
 
         <!-- for spring cloud config -->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-starter-config</artifactId>-->
-<!--        </dependency>-->
-
-        <!-- 配置中心 -->
         <dependency>
-            <groupId>com.nuonuo</groupId>
-            <artifactId>nuonuo-ops-config-spring-boot-starter</artifactId>
-            <version>${version.nuonuo.configcenter}</version>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-config</artifactId>
         </dependency>
 
         <dependency>
@@ -160,26 +153,6 @@
             <version>${fastjson.version}</version>
         </dependency>
     </dependencies>
-
-    <!-- aliyun maven repo -->
-    <repositories>
-        <repository>
-            <id>public</id>
-            <name>aliyun nexus</name>
-            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-        </repository>
-        <repository>
-            <id>nounouPublic</id>
-            <url>http://192.168.210.41:8081/nexus/content/groups/public/</url>
-        </repository>
-        <repository>
-            <id>jitpack.io</id>
-            <url>https://jitpack.io</url>
-        </repository>
-    </repositories>
 
     <dependencyManagement>
         <dependencies>
